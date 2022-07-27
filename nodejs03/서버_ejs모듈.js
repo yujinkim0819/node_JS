@@ -5,7 +5,7 @@ var ejs = require('ejs');
 
 // 서버를 생성하고 실행합니다
 http.createServer(function (request, response) {
-    fs.readFile('ejsPage.ejs', 'utf-8', function (error, data) {
+    fs.readFile('ejsPage_서버_ejs모듈.ejs', 'utf-8', function (error, data) {
         response.writeHead(200, {'Content-Type': 'text/html'});
         response.end(ejs.render(data));
     });        

@@ -6,7 +6,7 @@ var fs = require('fs');
 http.createServer(function (request, response) {
     if(request.method == 'GET'){
         // GET요청
-        fs.readFile('test.html', function (error, data) {
+        fs.readFile('get요청방식.html', function (error, data) {
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.end(data);
         })

@@ -7,6 +7,15 @@ app.set('port', process.env.port||4444);
 // 미들웨어 사용
 app.use(function (req,res,next) {
     console.log('첫번째 미들웨어\n');
+    //데이터를 주고 받을 수 있게 get, post 방식 사용
+    var useAgent = req.header('User-Agent');
+    var paramName = req.query.name;
+
+    res.send('<h2> 서버에서 응답 User-Agent -> </h2>' + useAgent +
+    '<h2>paramName->' + paramName + '</h2>');
+
+    // 다른 곳으로 사이트 이동
+    res.redirect('http://www.google.com');
     req.user = 'hong';
     req.next(); // 두번째 가져온다
     /*
@@ -15,7 +24,7 @@ app.use(function (req,res,next) {
     */
 });
 
-// 두번째 미들웨어 사용
+// 두번째 미들웨어 사용 _json 형태로 정의해서 send()로 가져온다
 app.use(function (req,res,next) {
     console('두번째 미들웨어 _send()\n');
     // json 형태로 정의

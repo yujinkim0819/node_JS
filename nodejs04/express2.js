@@ -18,7 +18,11 @@ app.use(function (req,res,next) {
 // 두번째 미들웨어 사용
 app.use(function (req,res,next) {
     console('두번째 미들웨어 _send()\n');
-    res.send('<h1>서버에서 응답한 결과...' + req.user +'</h1>');
+    // json 형태로 정의
+    var student = {name:'홍길동', tel:'010-1223-4567'};
+    res.send(student);
+    var studentStr = JSON.stringify(student);
+    res.send(student);
 });
 
 var server = http.createServer(app).listen(app.get('port'), function () {
